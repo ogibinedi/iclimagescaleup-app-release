@@ -103,8 +103,7 @@ Seluruh paket lisensi bersifat **One-Time Purchase (Sekali Bayar untuk Selamanya
    Buka aplikasi **ICL Image Scaleup Studio** &rarr; masuk ke menu **Pengaturan &rarr; Lisensi Perangkat**, lalu ketuk tombol salin pada **Kode Perangkat** Anda (format: `ICL-XXXX-XXXX`).
 2. **Hubungi Admin Resmi Igoy Creative Lab:**  
    Kirimkan **Kode Perangkat** Anda beserta pilihan paket (**Personal 1 Device / Studio 3 Device / Enterprise 10 Device**) dan bukti pembayaran ke kontak resmi pengembang:
-   - **WhatsApp / Telegram Resmi:** *(Silakan isi nomor WhatsApp / link kontak Anda di sini)*
-   - **Email Resmi:** *(Silakan isi alamat email bisnis Anda di sini)*
+   - **Telegram Resmi:** [+6285162912471](https://t.me/+6285162912471)
 3. **Tempel Kode Token Lisensi (100% Offline):**  
    Tempel (*paste*) **Kode Token Lisensi** (`ICL1....`) yang Anda terima ke kolom aktivasi di aplikasi, lalu ketuk **Aktifkan**. Status **Lisensi Pro Aktif** akan langsung terbuka secara permanen tanpa memerlukan koneksi internet!
 
