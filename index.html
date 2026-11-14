@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verifikasi Keaslian Resmi — ICL Image Scaleup Studio</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #0b0f14;
+            color: #f0f6fc;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 620px;
+            width: 100%;
+        }
+        .card {
+            background: #141b22;
+            border: 1px solid #24303c;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 20px;
+            margin-top: 0;
+            color: #33a6ff;
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 0;
+            color: #f0f6fc;
+        }
+        p {
+            font-size: 14px;
+            color: #9ba7b4;
+            line-height: 1.5;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #2f3e4e;
+            background: #0b0f14;
+            color: #f0f6fc;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .result-box {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #0d2136;
+            border: 1px solid #0091ff;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #33a6ff;
+            text-align: center;
+        }
+        .drop-zone {
+            border: 2px dashed #2f3e4e;
+            border-radius: 10px;
+            padding: 28px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .drop-zone:hover {
+            border-color: #0091ff;
+        }
+        .hash-output {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #0b0f14;
+            border: 1px solid #24303c;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            color: #2ea043;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🛡️ Portal Verifikasi Keaslian Resmi — Igoy Creative Lab</h1>
+        <p>Gunakan halaman ini (100% berjalan di browser Anda tanpa mengunggah data ke server) untuk memverifikasi keaslian aplikasi <strong>ICL Image Scaleup Studio</strong>.</p>
+    </div>
+
+    <div class="card">
+        <h2>1. Cek Kode Keaslian Aplikasi</h2>
+        <p>Buka aplikasi di HP Anda: <strong>Pengaturan &rarr; Cek Keaslian Aplikasi</strong>, ketik kode angka acak yang sama di bawah ini, lalu pastikan <strong>Respon Keaslian</strong> yang muncul sama persis:</p>
+        <input type="text" id="challengeInput" maxlength="8" placeholder="Ketik kode uji (contoh: 4829)" autocomplete="off">
+        <div class="result-box" id="responseBox">AUTH-----</div>
+    </div>
+
+    <div class="card">
+        <h2>2. Cek Keaslian File APK</h2>
+        <p>Pilih atau seret file <code>.apk</code> yang Anda unduh untuk memeriksa keaslian berkas instalasi resmi:</p>
+        <label class="drop-zone" for="apkFileInput">
+            📂 Klik atau Seret File APK ke Sini
+            <input type="file" id="apkFileInput" accept=".apk" style="display:none">
+        </label>
+        <div class="hash-output" id="hashOutput"></div>
+    </div>
+</div>
+
+<script>
+const PUBLIC_AUTH_DIGEST_HEX = "300238f27ba21a2ea68688abe99bcf780992af7bc8d59a82fbde4348e222c7a8";
+const OFFICIAL_RELEASE_SHA256 = "acf681535f51c88397b80c1884e8d89a6f8589b6c17a1cd8141da831d6c73e4d";
+const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+function hexToBytes(hex) {
+    const out = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < out.length; i++) {
+        out[i] = parseInt(hex.substr(i * 2, 2), 16);
+    }
+    return out;
+}
+
+async function computeResponse(challenge) {
+    const clean = challenge.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+    if (!clean) return "AUTH-----";
+    const prefix = hexToBytes(PUBLIC_AUTH_DIGEST_HEX);
+    const suffix = new TextEncoder().encode(":ICL-AUTH:" + clean);
+    const payload = new Uint8Array(prefix.length + suffix.length);
+    payload.set(prefix, 0);
+    payload.set(suffix, prefix.length);
+    const hashBuf = await crypto.subtle.digest("SHA-256", payload);
+    const digest = new Uint8Array(hashBuf);
+    let chars = "";
+    for (let i = 0; i < 8; i++) {
+        chars += ALPHABET[digest[i] & 31];
+    }
+    return "AUTH-" + chars.slice(0, 4) + "-" + chars.slice(4, 8);
+}
+
+document.getElementById("challengeInput").addEventListener("input", async (e) => {
+    const clean = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
+    e.target.value = clean;
+    document.getElementById("responseBox").textContent = await computeResponse(clean);
+});
+
+document.getElementById("apkFileInput").addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const out = document.getElementById("hashOutput");
+    out.style.display = "block";
+    out.style.color = "#9ba7b4";
+    out.textContent = "Menghitung SHA-256...";
+    const buf = await file.arrayBuffer();
+    const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+    const hex = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    const isMatch = (hex === OFFICIAL_RELEASE_SHA256);
+    out.style.color = isMatch ? "#2ea043" : "#f85149";
+    const statusText = isMatch
+        ? "✅ TERVERIFIKASI ASLI (Cocok dengan Rilis Resmi Igoy Creative Lab)"
+        : "⚠️ PERINGATAN: Hash tidak cocok dengan rilis produksi resmi v1.0.0!";
+    out.innerHTML =
+        "<strong>Status:</strong> " + statusText + "<br>" +
+        "<strong>Nama File:</strong> " + file.name + "<br>" +
+        "<strong>Ukuran Persis:</strong> " + file.size.toLocaleString() + " bytes<br>" +
+        "<strong>SHA-256 Hash:</strong> " + hex;
+});
+</script>
+</body>
+</html>
