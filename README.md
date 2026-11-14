@@ -42,15 +42,17 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
 
 Anda dapat memastikan bahwa aplikasi yang terpasang di perangkat Anda adalah **100% asli rilisan Igoy Creative Lab** (bukan APK modifikasi/tiruan) melalui dua cara:
 
+> **Portal Verifikasi Resmi:** [https://iclimagescaleup-release.netlify.app/](https://iclimagescaleup-release.netlify.app/)
+
 ### 1. Cek Kode Keaslian Aplikasi (Di Dalam Aplikasi)
 1. Buka aplikasi **ICL Image Scaleup Studio** di HP Anda, lalu masuk ke menu **Pengaturan** (gulir ke bagian paling bawah: **Cek Keaslian Aplikasi**).
 2. Ketik 4 angka acak pilihan Anda (contoh: `4829`).
-3. Buka halaman **Portal Verifikasi Resmi** kami, lalu ketik 4 angka yang sama:
+3. Buka halaman **[Portal Verifikasi Resmi](https://iclimagescaleup-release.netlify.app/)** kami, lalu ketik 4 angka yang sama:
    - Contoh untuk kode uji `4829`, aplikasi asli akan selalu menampilkan: **`AUTH-JUZV-N45F`**.
 4. Apabila kode respon yang muncul sama persis, maka aplikasi di HP Anda terjamin asli dan memiliki tanda tangan digital resmi **Igoy Creative Lab**.
 
 ### 2. Verifikasi Checksum SHA-256 Berkas APK
-Gunakan fitur **Cek Keaslian File APK** pada halaman Portal Verifikasi Resmi (atau jalankan perintah `sha256sum app-release.apk` di terminal) dan pastikan hasilnya cocok 100% dengan tabel di atas.
+Gunakan fitur **Cek Keaslian File APK** pada halaman **[Portal Verifikasi Resmi](https://iclimagescaleup-release.netlify.app/)** (atau jalankan perintah `sha256sum app-release.apk` di terminal) dan pastikan hasilnya cocok 100% dengan tabel di atas.
 
 ---
 
