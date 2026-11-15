@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Verifikasi Keaslian Resmi — ICL Image Scaleup Studio</title>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
@@ -17,6 +20,7 @@
         .container {
             max-width: 620px;
             width: 100%;
+            min-width: 0;
         }
         .card {
             background: #141b22;
@@ -25,24 +29,33 @@
             padding: 24px;
             margin-bottom: 20px;
         }
+        .card:last-child {
+            margin-bottom: 0;
+        }
         h1 {
             font-size: 20px;
-            margin-top: 0;
+            line-height: 1.35;
+            margin: 0 0 10px;
             color: #33a6ff;
         }
         h2 {
             font-size: 16px;
-            margin-top: 0;
+            line-height: 1.4;
+            margin: 0 0 10px;
             color: #f0f6fc;
         }
         p {
             font-size: 14px;
             color: #9ba7b4;
             line-height: 1.5;
+            margin: 0 0 14px;
+        }
+        p:last-child {
+            margin-bottom: 0;
         }
         input[type="text"] {
             width: 100%;
-            box-sizing: border-box;
+            min-height: 46px;
             padding: 12px 14px;
             border-radius: 8px;
             border: 1px solid #2f3e4e;
@@ -52,6 +65,11 @@
             font-size: 16px;
             font-weight: bold;
             letter-spacing: 1px;
+        }
+        input[type="text"]:focus-visible {
+            border-color: #0091ff;
+            outline: 2px solid #33a6ff;
+            outline-offset: 2px;
         }
         .result-box {
             margin-top: 14px;
@@ -64,29 +82,100 @@
             font-weight: bold;
             color: #33a6ff;
             text-align: center;
+            overflow-wrap: anywhere;
         }
         .drop-zone {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            min-height: 96px;
             border: 2px dashed #2f3e4e;
             border-radius: 10px;
             padding: 28px 16px;
+            background: rgba(11, 15, 20, 0.35);
+            color: #f0f6fc;
+            font-size: 15px;
+            line-height: 1.45;
             text-align: center;
             cursor: pointer;
-            transition: border-color 0.2s;
+            touch-action: manipulation;
+            user-select: none;
+            transition: border-color 0.2s, background-color 0.2s;
         }
-        .drop-zone:hover {
+        .drop-zone:hover,
+        .drop-zone.is-dragover {
             border-color: #0091ff;
+            background: rgba(0, 145, 255, 0.08);
+        }
+        .drop-zone:active {
+            background: rgba(0, 145, 255, 0.14);
+        }
+        .drop-zone:focus-within {
+            border-color: #0091ff;
+            outline: 2px solid #33a6ff;
+            outline-offset: 2px;
+        }
+        .drop-zone-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .drop-zone-text {
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         .hash-output {
             margin-top: 14px;
             padding: 12px;
+            width: 100%;
             border-radius: 8px;
             background: #0b0f14;
             border: 1px solid #24303c;
             font-family: monospace;
             font-size: 12px;
-            word-break: break-all;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+            word-break: break-word;
             color: #2ea043;
             display: none;
+        }
+        @media (max-width: 540px) {
+            body {
+                padding: 16px;
+            }
+            .card {
+                padding: 18px 16px;
+                margin-bottom: 16px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            h2 {
+                font-size: 15px;
+            }
+            .result-box {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .drop-zone {
+                min-height: 88px;
+                padding: 22px 14px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -97,22 +186,23 @@
         <p>Gunakan halaman ini (100% berjalan di browser Anda tanpa mengunggah data ke server) untuk memverifikasi keaslian aplikasi <strong>ICL Image Scaleup Studio</strong>.</p>
     </div>
 
-    <div class="card">
-        <h2>1. Cek Kode Keaslian Aplikasi</h2>
+    <section class="card" aria-labelledby="authCodeTitle">
+        <h2 id="authCodeTitle">1. Cek Kode Keaslian Aplikasi</h2>
         <p>Buka aplikasi di HP Anda: <strong>Pengaturan &rarr; Cek Keaslian Aplikasi</strong>, ketik kode angka acak yang sama di bawah ini, lalu pastikan <strong>Respon Keaslian</strong> yang muncul sama persis:</p>
         <input type="text" id="challengeInput" maxlength="8" placeholder="Ketik kode uji (contoh: 4829)" autocomplete="off">
         <div class="result-box" id="responseBox">AUTH-----</div>
-    </div>
+    </section>
 
-    <div class="card">
-        <h2>2. Cek Keaslian File APK</h2>
+    <section class="card" aria-labelledby="apkCheckTitle">
+        <h2 id="apkCheckTitle">2. Cek Keaslian File APK</h2>
         <p>Pilih atau seret file <code>.apk</code> yang Anda unduh untuk memeriksa keaslian berkas instalasi resmi:</p>
-        <label class="drop-zone" for="apkFileInput">
-            📂 Klik atau Seret File APK ke Sini
-            <input type="file" id="apkFileInput" accept=".apk" style="display:none">
+        <label class="drop-zone" id="apkDropZone" for="apkFileInput">
+            <span class="drop-zone-icon" aria-hidden="true">📂</span>
+            <span class="drop-zone-text">Klik atau Seret File APK ke Sini</span>
+            <input type="file" id="apkFileInput" class="visually-hidden" accept=".apk">
         </label>
-        <div class="hash-output" id="hashOutput"></div>
-    </div>
+        <div class="hash-output" id="hashOutput" aria-live="polite"></div>
+    </section>
 </div>
 
 <script>
@@ -145,32 +235,88 @@ async function computeResponse(challenge) {
     return "AUTH-" + chars.slice(0, 4) + "-" + chars.slice(4, 8);
 }
 
+function appendHashLine(container, label, value, includeBreak) {
+    const strong = document.createElement("strong");
+    strong.textContent = label + ":";
+    container.appendChild(strong);
+    container.appendChild(document.createTextNode(" " + value));
+    if (includeBreak) {
+        container.appendChild(document.createElement("br"));
+    }
+}
+
+async function verifyApkFile(file) {
+    const out = document.getElementById("hashOutput");
+    out.style.display = "block";
+    out.style.color = "#9ba7b4";
+    out.textContent = "Menghitung SHA-256...";
+    try {
+        const buf = await file.arrayBuffer();
+        const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+        const hex = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        const isMatch = (hex === OFFICIAL_RELEASE_SHA256);
+        out.style.color = isMatch ? "#2ea043" : "#f85149";
+        const statusText = isMatch
+            ? "✅ TERVERIFIKASI ASLI (Cocok dengan Rilis Resmi Igoy Creative Lab)"
+            : "⚠️ PERINGATAN: Hash tidak cocok dengan rilis produksi resmi v1.0.0!";
+        out.textContent = "";
+        appendHashLine(out, "Status", statusText, true);
+        appendHashLine(out, "Nama File", file.name, true);
+        appendHashLine(out, "Ukuran Persis", file.size.toLocaleString() + " bytes", true);
+        appendHashLine(out, "SHA-256 Hash", hex, false);
+    } catch (err) {
+        out.style.color = "#f85149";
+        out.textContent = "⚠️ Gagal memverifikasi file: " + (err && err.message ? err.message : "Terjadi kesalahan saat membaca file.");
+    }
+}
+
 document.getElementById("challengeInput").addEventListener("input", async (e) => {
     const clean = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
     e.target.value = clean;
     document.getElementById("responseBox").textContent = await computeResponse(clean);
 });
 
-document.getElementById("apkFileInput").addEventListener("change", async (e) => {
-    const file = e.target.files[0];
+const apkDropZone = document.getElementById("apkDropZone");
+const apkFileInput = document.getElementById("apkFileInput");
+
+apkFileInput.addEventListener("change", async (e) => {
+    const file = e.target.files && e.target.files[0];
     if (!file) return;
-    const out = document.getElementById("hashOutput");
-    out.style.display = "block";
-    out.style.color = "#9ba7b4";
-    out.textContent = "Menghitung SHA-256...";
-    const buf = await file.arrayBuffer();
-    const hashBuf = await crypto.subtle.digest("SHA-256", buf);
-    const hex = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
-    const isMatch = (hex === OFFICIAL_RELEASE_SHA256);
-    out.style.color = isMatch ? "#2ea043" : "#f85149";
-    const statusText = isMatch
-        ? "✅ TERVERIFIKASI ASLI (Cocok dengan Rilis Resmi Igoy Creative Lab)"
-        : "⚠️ PERINGATAN: Hash tidak cocok dengan rilis produksi resmi v1.0.0!";
-    out.innerHTML =
-        "<strong>Status:</strong> " + statusText + "<br>" +
-        "<strong>Nama File:</strong> " + file.name + "<br>" +
-        "<strong>Ukuran Persis:</strong> " + file.size.toLocaleString() + " bytes<br>" +
-        "<strong>SHA-256 Hash:</strong> " + hex;
+    await verifyApkFile(file);
+    e.target.value = "";
+});
+
+apkFileInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        apkFileInput.click();
+    }
+});
+
+["dragenter", "dragover"].forEach((eventName) => {
+    apkDropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        apkDropZone.classList.add("is-dragover");
+    });
+});
+
+apkDropZone.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!apkDropZone.contains(e.relatedTarget)) {
+        apkDropZone.classList.remove("is-dragover");
+    }
+});
+
+apkDropZone.addEventListener("drop", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    apkDropZone.classList.remove("is-dragover");
+    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) {
+        await verifyApkFile(file);
+    }
 });
 </script>
 </body>
