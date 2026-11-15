@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Verifikasi Keaslian Resmi — ICL Image Scaleup Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -119,9 +120,16 @@
             outline: 2px solid #33a6ff;
             outline-offset: 2px;
         }
+        .title-icon {
+            margin-right: 8px;
+        }
         .drop-zone-icon {
             font-size: 24px;
             line-height: 1;
+            color: #33a6ff;
+        }
+        .status-icon {
+            margin-right: 4px;
         }
         .drop-zone-text {
             max-width: 100%;
@@ -182,7 +190,7 @@
 <body>
 <div class="container">
     <div class="card">
-        <h1>🛡️ Portal Verifikasi Keaslian Resmi — Igoy Creative Lab</h1>
+        <h1><i class="fa-solid fa-shield-halved title-icon" aria-hidden="true"></i>Portal Verifikasi Keaslian Resmi — Igoy Creative Lab</h1>
         <p>Gunakan halaman ini (100% berjalan di browser Anda tanpa mengunggah data ke server) untuk memverifikasi keaslian aplikasi <strong>ICL Image Scaleup Studio</strong>.</p>
     </div>
 
@@ -197,7 +205,7 @@
         <h2 id="apkCheckTitle">2. Cek Keaslian File APK</h2>
         <p>Pilih atau seret file <code>.apk</code> yang Anda unduh untuk memeriksa keaslian berkas instalasi resmi:</p>
         <label class="drop-zone" id="apkDropZone" for="apkFileInput">
-            <span class="drop-zone-icon" aria-hidden="true">📂</span>
+            <span class="drop-zone-icon" aria-hidden="true"><i class="fa-solid fa-folder-open"></i></span>
             <span class="drop-zone-text">Klik atau Seret File APK ke Sini</span>
             <input type="file" id="apkFileInput" class="visually-hidden" accept=".apk">
         </label>
@@ -235,6 +243,23 @@ async function computeResponse(challenge) {
     return "AUTH-" + chars.slice(0, 4) + "-" + chars.slice(4, 8);
 }
 
+function createIconNode(iconClass) {
+    const icon = document.createElement("i");
+    icon.className = iconClass + " status-icon";
+    icon.setAttribute("aria-hidden", "true");
+    return icon;
+}
+
+function appendStatusLine(container, iconClass, statusText) {
+    const strong = document.createElement("strong");
+    strong.textContent = "Status:";
+    container.appendChild(strong);
+    container.appendChild(document.createTextNode(" "));
+    container.appendChild(createIconNode(iconClass));
+    container.appendChild(document.createTextNode(" " + statusText));
+    container.appendChild(document.createElement("br"));
+}
+
 function appendHashLine(container, label, value, includeBreak) {
     const strong = document.createElement("strong");
     strong.textContent = label + ":";
@@ -256,17 +281,22 @@ async function verifyApkFile(file) {
         const hex = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
         const isMatch = (hex === OFFICIAL_RELEASE_SHA256);
         out.style.color = isMatch ? "#2ea043" : "#f85149";
+        const iconClass = isMatch
+            ? "fa-solid fa-circle-check"
+            : "fa-solid fa-triangle-exclamation";
         const statusText = isMatch
-            ? "✅ TERVERIFIKASI ASLI (Cocok dengan Rilis Resmi Igoy Creative Lab)"
-            : "⚠️ PERINGATAN: Hash tidak cocok dengan rilis produksi resmi v1.0.0!";
+            ? "TERVERIFIKASI ASLI (Cocok dengan Rilis Resmi Igoy Creative Lab)"
+            : "PERINGATAN: Hash tidak cocok dengan rilis produksi resmi v1.0.0!";
         out.textContent = "";
-        appendHashLine(out, "Status", statusText, true);
+        appendStatusLine(out, iconClass, statusText);
         appendHashLine(out, "Nama File", file.name, true);
         appendHashLine(out, "Ukuran Persis", file.size.toLocaleString() + " bytes", true);
         appendHashLine(out, "SHA-256 Hash", hex, false);
     } catch (err) {
         out.style.color = "#f85149";
-        out.textContent = "⚠️ Gagal memverifikasi file: " + (err && err.message ? err.message : "Terjadi kesalahan saat membaca file.");
+        out.textContent = "";
+        out.appendChild(createIconNode("fa-solid fa-triangle-exclamation"));
+        out.appendChild(document.createTextNode(" Gagal memverifikasi file: " + (err && err.message ? err.message : "Terjadi kesalahan saat membaca file.")));
     }
 }
 
