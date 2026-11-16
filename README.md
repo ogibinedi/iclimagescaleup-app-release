@@ -11,6 +11,7 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
 
 1. **AI Super-Resolution Upscaler (Hingga 4x / Resolusi 11K 67 MP)**
    - Mesin **ICL Proprietary AI Engine** dengan akselerasi perangkat keras & pemrosesan mulus bebas artefak kotak-kotak.
+   - **Slider Perbandingan Sebelum/Sesudah dengan Pinch Zoom-In / Zoom-Out (`100%`–`1200%`)**: Cubit layar untuk memperbesar detail hasil scaleup vs gambar asli hingga resolusi pratinjau `4K (4096px)`, ketuk 2x untuk zoom cepat `300%`, geser area saat zoom, serta kontrol cepat (`−` / `%` / `+` / Reset) pada layar hasil & riwayat.
    - **Mode Potret Fotorealistik**: Restorasi tekstur pori kulit alami & ketajaman detail wajah tanpa efek lukisan lilin.
    - **Pre-Processing & Color Grading**: *Auto White-Balance*, *Denoise/Deblock*, kurva kecerahan/kontras/saturasi/warmth, serta kolase *Before/After* + *Zoom Loupe 2.5x*.
 2. **AI Background Removal & Pas Foto Studio**
@@ -19,7 +20,8 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
    - **Kompositor Studio & E-Commerce**: Kanvas 1:1 Marketplace, 4:5 Feed, 9:16 Story, latar foto galeri + *Bokeh Blur*, *Contact/Drop Shadow*, *Floor Reflection*, dan *Die-Cut Sticker Outline*.
    - **Cetak Pas Foto Resmi (300 DPI)**: Latar Merah (`#DB1514`) & Biru (`#0054A6`), ukuran `2×3`, `3×4`, `4×6 cm`, serta penataan otomatis ke kertas **4R & A4 (JPG & PDF siap cetak)**.
 3. **Ekspor Cerdas & Perlindungan Hak Cipta Fotografer**
-   - **Pembatas Ukuran File Ekspor**: Target otomatis `< 200 KB` (portal CPNS/SSCASN/BKN), `< 500 KB`, `< 1 MB`, atau `< 2 MB`.
+   - **Pilihan Kualitas Kompresi JPEG (`50%`, `95%`, `100%`) & Pembatas Ukuran File**: Pilih kualitas kompresi JPEG di layar Utama, *Batch ScaleUp*, dan Riwayat (*Cetak Ulang*), atau aktifkan target ukuran otomatis `< 200 KB` (portal CPNS/SSCASN/BKN), `< 500 KB`, `< 1 MB`, atau `< 2 MB`.
+   - **Optimasi Transparansi & Master Lossless**: Deteksi piksel alpha otomatis agar foto RGB tetap ringkas tanpa kanal transparansi berlebih.
    - **Watermark & Tanda Tangan EXIF Kustom (Lisensi Pro)**: Sematkan nama fotografer/studio dan hak cipta Anda langsung ke gambar serta metadata EXIF standar *Microstock* (*Adobe Stock / Shutterstock ready*).
 
 ---
@@ -35,8 +37,8 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
 | **Tautan Unduhan Resmi** | [Download `app-release.apk` (v1.0.0, 58.93 MB)](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk) |
 | **Paket Aplikasi** | `com.igoycreativelab.imagescaleup` |
 | **Arsitektur Target** | `arm64-v8a` (Android 8.0 Oreo / API 26 ke atas) |
-| **Ukuran Berkas Persis** | `61,794,822 bytes` (`58.93 MB`) |
-| **SHA-256 Checksum APK** | `94480bfa211304a7c95c3ea47824f207bc786c515c0d5e0aea050642b5929227` |
+| **Ukuran Berkas Persis** | `61,796,062 bytes` (`58.93 MB`) |
+| **SHA-256 Checksum APK** | `86901c3055ac8364e2b1904bcd161f300cc082b16ec9810f05c79cf168c84539` |
 | **SHA-256 Sertifikat Pengembang** | `D8:EC:EE:19:71:33:19:BE:0E:3F:E2:42:BE:01:7A:77:12:B2:C2:B0:16:A1:9C:56:66:C2:CF:2A:8C:33:65:84` |
 
 ---
