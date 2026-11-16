@@ -19,7 +19,7 @@
             justify-content: center;
         }
         .container {
-            max-width: 620px;
+            max-width: 780px;
             width: 100%;
             min-width: 0;
         }
@@ -161,6 +161,475 @@
             color: #2ea043;
             display: none;
         }
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .nav-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #0b0f14;
+            border: 1px solid #24303c;
+            color: #f0f6fc;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+        }
+        .nav-pill:hover {
+            border-color: #0091ff;
+            color: #33a6ff;
+            background: rgba(0, 145, 255, 0.08);
+        }
+        .nav-pill:focus-visible,
+        .btn-chip:focus-visible,
+        .btn-action:focus-visible,
+        .split-handle:focus-visible,
+        .lightbox-close:focus-visible {
+            outline: 2px solid #33a6ff;
+            outline-offset: 2px;
+        }
+        .control-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+        .group-label {
+            font-size: 12px;
+            color: #9ba7b4;
+            margin-right: 4px;
+            font-weight: 600;
+        }
+        .btn-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            border: 1px solid #2f3e4e;
+            background: #0b0f14;
+            color: #9ba7b4;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+        }
+        .btn-chip:hover {
+            border-color: #0091ff;
+            color: #f0f6fc;
+        }
+        .btn-chip[aria-pressed="true"] {
+            background: #0d2136;
+            border-color: #0091ff;
+            color: #33a6ff;
+        }
+        .compare-stage-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .compare-viewport {
+            position: relative;
+            width: 100%;
+            max-width: 410px;
+            aspect-ratio: 1536 / 2752;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2f3e4e;
+            background: #0b0f14;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+        }
+        .compare-viewport.is-zoomed {
+            cursor: grab;
+            touch-action: none;
+        }
+        .compare-viewport.is-panning {
+            cursor: grabbing;
+        }
+        .compare-layer {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .compare-layer img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transform-origin: 0 0;
+            will-change: transform;
+        }
+        .compare-after-layer {
+            clip-path: inset(0 0 0 var(--split, 50%));
+        }
+        .split-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--split, 50%);
+            width: 2px;
+            background: #33a6ff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+            transform: translateX(-1px);
+            pointer-events: none;
+            z-index: 4;
+        }
+        .split-handle {
+            position: absolute;
+            top: 50%;
+            left: var(--split, 50%);
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 2px solid #33a6ff;
+            background: rgba(11, 15, 20, 0.92);
+            color: #f0f6fc;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: ew-resize;
+            touch-action: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
+            z-index: 5;
+        }
+        .stage-badge {
+            position: absolute;
+            top: 10px;
+            padding: 5px 9px;
+            border-radius: 6px;
+            background: rgba(11, 15, 20, 0.82);
+            border: 1px solid rgba(240, 246, 252, 0.16);
+            color: #f0f6fc;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 3;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+        }
+        .stage-badge-left {
+            left: 10px;
+        }
+        .stage-badge-right {
+            right: 10px;
+            color: #33a6ff;
+            border-color: rgba(51, 166, 255, 0.4);
+        }
+        .load-status-pill {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(11, 15, 20, 0.88);
+            border: 1px solid #2f3e4e;
+            color: #f0f6fc;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 6;
+        }
+        .load-status-pill.is-ready {
+            border-color: rgba(46, 160, 67, 0.5);
+            color: #2ea043;
+        }
+        .load-status-pill.is-error {
+            border-color: rgba(248, 81, 73, 0.55);
+            color: #f85149;
+        }
+        .side-by-side-grid {
+            width: 100%;
+            display: none;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .side-by-side-grid.is-active {
+            display: grid;
+        }
+        .side-pane {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1536 / 2752;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2f3e4e;
+            background: #0b0f14;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+        }
+        .side-pane.is-zoomed {
+            cursor: grab;
+            touch-action: none;
+        }
+        .side-pane.is-panning {
+            cursor: grabbing;
+        }
+        .side-pane img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transform-origin: 0 0;
+            will-change: transform;
+        }
+        .split-range-row {
+            width: 100%;
+            max-width: 410px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #9ba7b4;
+        }
+        .split-range-row input[type="range"] {
+            flex: 1;
+            accent-color: #0091ff;
+            cursor: pointer;
+        }
+        .compare-meta {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .meta-box {
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #0b0f14;
+            border: 1px solid #24303c;
+            font-size: 12px;
+            line-height: 1.45;
+            color: #9ba7b4;
+        }
+        .meta-box strong {
+            display: block;
+            color: #f0f6fc;
+            margin-bottom: 2px;
+        }
+        .hint-text {
+            font-size: 12px;
+            color: #9ba7b4;
+            text-align: center;
+            margin: 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .gallery-card {
+            background: #0b0f14;
+            border: 1px solid #24303c;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #090d12;
+            border-bottom: 1px solid #24303c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-thumb.is-contain img {
+            object-fit: contain;
+            padding: 8px;
+        }
+        .gallery-placeholder {
+            padding: 16px;
+            text-align: center;
+            color: #9ba7b4;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .gallery-placeholder i {
+            font-size: 24px;
+            color: #33a6ff;
+        }
+        .gallery-body {
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .gallery-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f0f6fc;
+            margin: 0;
+            word-break: break-word;
+        }
+        .gallery-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .spec-tag {
+            font-size: 11px;
+            padding: 3px 7px;
+            border-radius: 6px;
+            background: #141b22;
+            border: 1px solid #24303c;
+            color: #9ba7b4;
+            font-family: monospace;
+        }
+        .gallery-desc {
+            font-size: 12px;
+            color: #9ba7b4;
+            line-height: 1.45;
+            margin: 0;
+        }
+        .gallery-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            border: 1px solid #2f3e4e;
+            background: #141b22;
+            color: #f0f6fc;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+        }
+        .btn-action:hover {
+            border-color: #0091ff;
+            color: #33a6ff;
+            background: rgba(0, 145, 255, 0.08);
+        }
+        .btn-action-primary {
+            background: #0d2136;
+            border-color: #0091ff;
+            color: #33a6ff;
+        }
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 12, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 999;
+        }
+        .lightbox.is-open {
+            display: flex;
+        }
+        .lightbox-dialog {
+            width: 100%;
+            max-width: 840px;
+            max-height: 92vh;
+            background: #141b22;
+            border: 1px solid #2f3e4e;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .lightbox-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #24303c;
+        }
+        .lightbox-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f0f6fc;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+        .lightbox-close {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            border: 1px solid #2f3e4e;
+            background: #0b0f14;
+            color: #f0f6fc;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-close:hover {
+            border-color: #0091ff;
+            color: #33a6ff;
+        }
+        .lightbox-media {
+            background: #0b0f14;
+            flex: 1;
+            min-height: 200px;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+        .lightbox-media img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .lightbox-footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 16px;
+            border-top: 1px solid #24303c;
+            font-size: 12px;
+            color: #9ba7b4;
+        }
         @media (max-width: 540px) {
             body {
                 padding: 16px;
@@ -184,6 +653,17 @@
                 padding: 22px 14px;
                 font-size: 14px;
             }
+            .gallery-grid,
+            .compare-meta {
+                grid-template-columns: 1fr;
+            }
+            .side-by-side-grid {
+                gap: 8px;
+            }
+            .stage-badge {
+                font-size: 10px;
+                padding: 4px 7px;
+            }
         }
     </style>
 </head>
@@ -191,17 +671,23 @@
 <div class="container">
     <div class="card">
         <h1><i class="fa-solid fa-shield-halved title-icon" aria-hidden="true"></i>Portal Verifikasi Keaslian Resmi — Igoy Creative Lab</h1>
-        <p>Gunakan halaman ini (100% berjalan di browser Anda tanpa mengunggah data ke server) untuk memverifikasi keaslian aplikasi <strong>ICL Image Scaleup Studio</strong>.</p>
+        <p>Gunakan halaman ini (100% berjalan di browser Anda tanpa mengunggah data ke server) untuk memverifikasi keaslian aplikasi <strong>ICL Image Scaleup Studio</strong> serta melihat galeri perbandingan hasil 4x AI scale-up.</p>
+        <nav class="quick-nav" aria-label="Navigasi bagian halaman">
+            <a class="nav-pill" href="#authCodeSection"><i class="fa-solid fa-key" aria-hidden="true"></i>Cek Kode</a>
+            <a class="nav-pill" href="#apkCheckSection"><i class="fa-solid fa-file-shield" aria-hidden="true"></i>Cek File APK</a>
+            <a class="nav-pill" href="#compareSection"><i class="fa-solid fa-sliders" aria-hidden="true"></i>Perbandingan 4x</a>
+            <a class="nav-pill" href="#gallerySection"><i class="fa-solid fa-images" aria-hidden="true"></i>Galeri Gambar</a>
+        </nav>
     </div>
 
-    <section class="card" aria-labelledby="authCodeTitle">
+    <section class="card" id="authCodeSection" aria-labelledby="authCodeTitle">
         <h2 id="authCodeTitle">1. Cek Kode Keaslian Aplikasi</h2>
         <p>Buka aplikasi di HP Anda: <strong>Pengaturan &rarr; Cek Keaslian Aplikasi</strong>, ketik kode angka acak yang sama di bawah ini, lalu pastikan <strong>Respon Keaslian</strong> yang muncul sama persis:</p>
         <input type="text" id="challengeInput" maxlength="8" placeholder="Ketik kode uji (contoh: 4829)" autocomplete="off">
         <div class="result-box" id="responseBox">AUTH-----</div>
     </section>
 
-    <section class="card" aria-labelledby="apkCheckTitle">
+    <section class="card" id="apkCheckSection" aria-labelledby="apkCheckTitle">
         <h2 id="apkCheckTitle">2. Cek Keaslian File APK</h2>
         <p>Pilih atau seret file <code>.apk</code> yang Anda unduh untuk memeriksa keaslian berkas instalasi resmi:</p>
         <label class="drop-zone" id="apkDropZone" for="apkFileInput">
@@ -211,11 +697,310 @@
         </label>
         <div class="hash-output" id="hashOutput" aria-live="polite"></div>
     </section>
+
+    <section class="card" id="compareSection" aria-labelledby="compareTitle">
+        <h2 id="compareTitle"><i class="fa-solid fa-sliders title-icon" aria-hidden="true"></i>3. Perbandingan Foto Original vs Hasil 4x AI Scaleup</h2>
+        <p>Geser garis pembanding atau aktifkan perbesaran <strong>2x–8x</strong> untuk membandingkan detail bulu, mata, dan tekstur antara foto asli (<code>1536x2752</code>) dan hasil upscale 4x (<code>6144x11008</code> / 67.6 MP).</p>
+
+        <div class="control-bar">
+            <div class="chip-group" role="group" aria-label="Mode tampilan perbandingan">
+                <span class="group-label">Mode:</span>
+                <button type="button" class="btn-chip" data-mode="slider" aria-pressed="true">
+                    <i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>Slider Geser
+                </button>
+                <button type="button" class="btn-chip" data-mode="side" aria-pressed="false">
+                    <i class="fa-solid fa-table-columns" aria-hidden="true"></i>Berdampingan
+                </button>
+            </div>
+            <div class="chip-group" role="group" aria-label="Sumber berkas hasil scale-up">
+                <span class="group-label">Hasil:</span>
+                <button type="button" class="btn-chip" data-source="jpg" aria-pressed="true">
+                    <i class="fa-solid fa-file-image" aria-hidden="true"></i>JPEG 4x (28.5 MB)
+                </button>
+                <button type="button" class="btn-chip" data-source="png" aria-pressed="false">
+                    <i class="fa-solid fa-gem" aria-hidden="true"></i>PNG Lossless (80.5 MB)
+                </button>
+            </div>
+        </div>
+
+        <div class="control-bar">
+            <div class="chip-group" role="group" aria-label="Tingkat perbesaran">
+                <span class="group-label">Zoom:</span>
+                <button type="button" class="btn-chip" data-zoom="1" aria-pressed="true">1x</button>
+                <button type="button" class="btn-chip" data-zoom="2" aria-pressed="false">2x</button>
+                <button type="button" class="btn-chip" data-zoom="4" aria-pressed="false">4x</button>
+                <button type="button" class="btn-chip" data-zoom="8" aria-pressed="false">8x</button>
+            </div>
+            <div class="chip-group" role="group" aria-label="Titik fokus detail">
+                <span class="group-label">Fokus:</span>
+                <button type="button" class="btn-chip" data-focus="full" aria-pressed="true">Penuh</button>
+                <button type="button" class="btn-chip" data-focus="eye" aria-pressed="false">Mata &amp; Paruh</button>
+                <button type="button" class="btn-chip" data-focus="crest" aria-pressed="false">Jambul</button>
+                <button type="button" class="btn-chip" data-focus="chest" aria-pressed="false">Bulu Dada</button>
+                <button type="button" class="btn-chip" data-focus="claws" aria-pressed="false">Cakar</button>
+            </div>
+        </div>
+
+        <div class="compare-stage-wrap">
+            <div class="compare-viewport" id="compareViewport" style="--split: 50%;">
+                <div class="compare-layer">
+                    <img id="beforeImg" src="./sample_input.jpg" loading="lazy" alt="Foto original sebelum upscale (1536 x 2752 px)" draggable="false">
+                </div>
+                <div class="compare-layer compare-after-layer">
+                    <img id="afterImg" alt="Foto hasil 4x AI scale-up (6144 x 11008 px)" draggable="false">
+                </div>
+                <span class="stage-badge stage-badge-left">Original · 1536x2752</span>
+                <span class="stage-badge stage-badge-right" id="afterBadge">4x JPEG · 6144x11008</span>
+                <div class="split-line" aria-hidden="true"></div>
+                <button type="button" class="split-handle" id="splitHandle" aria-label="Geser pembanding foto original dan hasil scale-up">
+                    <i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>
+                </button>
+                <div class="load-status-pill" id="loadStatusPill" aria-live="polite">
+                    <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+                    <span>Menunggu gulir atau klik untuk memuat hasil 4x...</span>
+                </div>
+            </div>
+
+            <div class="split-range-row" id="splitRangeRow">
+                <span>Original</span>
+                <input type="range" id="splitRange" min="0" max="100" value="50" aria-label="Persentase posisi pembanding Before dan After">
+                <span id="splitValueLabel">50%</span>
+            </div>
+
+            <div class="side-by-side-grid" id="sideBySideGrid">
+                <div class="side-pane" id="sideBeforePane">
+                    <img id="sideBeforeImg" src="./sample_input.jpg" loading="lazy" alt="Foto original berdampingan (1536 x 2752 px)" draggable="false">
+                    <span class="stage-badge stage-badge-left">Original · 1536x2752</span>
+                </div>
+                <div class="side-pane" id="sideAfterPane">
+                    <img id="sideAfterImg" alt="Foto hasil 4x AI scale-up berdampingan (6144 x 11008 px)" draggable="false">
+                    <span class="stage-badge stage-badge-right" id="sideAfterBadge">4x JPEG · 6144x11008</span>
+                    <div class="load-status-pill" id="sideLoadStatusPill" aria-live="polite">
+                        <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+                        <span>Menunggu...</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="hint-text" id="compareHint">Tips: Pilih titik fokus (misal <strong>Mata &amp; Paruh</strong>) atau Zoom <strong>4x / 8x</strong>, lalu seret foto untuk menggeser area inspeksi.</p>
+
+            <div class="compare-meta">
+                <div class="meta-box">
+                    <strong>Original (<code>sample_input.jpg</code>)</strong>
+                    1536 x 2752 px (4.23 MP) &middot; 575.07 KB &middot; JPEG
+                </div>
+                <div class="meta-box">
+                    <strong>Hasil 4x AI Scaleup (<code id="metaOutputName">sample_output_2.jpg</code>)</strong>
+                    <span id="metaOutputInfo">6144 x 11008 px (67.63 MP / 11K) &middot; 28.49 MB &middot; JPEG sRGB + EXIF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card" id="gallerySection" aria-labelledby="galleryTitle">
+        <h2 id="galleryTitle"><i class="fa-solid fa-images title-icon" aria-hidden="true"></i>4. Galeri Seluruh Berkas Gambar di Root Repositori</h2>
+        <p>Daftar seluruh gambar sampel hasil uji coba dan bukti verifikasi keamanan resmi. Berkas beresolusi 11K (<code>28.49 MB</code> &amp; <code>80.51 MB</code>) dimuat sesuai permintaan agar halaman tetap ringan di jaringan seluler.</p>
+
+        <div class="gallery-grid">
+            <article class="gallery-card">
+                <div class="gallery-thumb">
+                    <img src="./sample_input.jpg" loading="lazy" alt="Sampel foto original sebelum upscaling (1536 x 2752 px)">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">sample_input.jpg</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">1536x2752</span>
+                        <span class="spec-tag">4.23 MP</span>
+                        <span class="spec-tag">575.07 KB</span>
+                        <span class="spec-tag">JPEG</span>
+                    </div>
+                    <p class="gallery-desc">Foto asli sebelum pemrosesan AI Super-Resolution (burung kolibri berjambul oranye).</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-compare-trigger" data-source="jpg">
+                            <i class="fa-solid fa-sliders" aria-hidden="true"></i>Bandingkan
+                        </button>
+                        <button type="button" class="btn-action js-lightbox-trigger" data-src="./sample_input.jpg" data-title="sample_input.jpg — Foto Original" data-caption="1536 x 2752 px (4.23 MP) · 575.07 KB · JPEG">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./sample_input.jpg" download="sample_input.jpg">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-card">
+                <div class="gallery-thumb" id="galleryThumbJpg">
+                    <div class="gallery-placeholder" id="galleryPlaceholderJpg">
+                        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                        <span>Hasil 4x JPEG 11K (28.49 MB)</span>
+                        <button type="button" class="btn-action btn-action-primary js-load-preview" data-key="jpg">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>Muat Pratinjau
+                        </button>
+                    </div>
+                    <img id="galleryImgJpg" alt="Hasil 4x AI scale-up format JPEG (6144 x 11008 px)" style="display: none;">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">sample_output_2.jpg</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">6144x11008</span>
+                        <span class="spec-tag">67.63 MP</span>
+                        <span class="spec-tag">28.49 MB</span>
+                        <span class="spec-tag">JPEG sRGB</span>
+                    </div>
+                    <p class="gallery-desc">Hasil upscale 4x resolusi 11K format JPEG dengan profil warna sRGB dan metadata EXIF.</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-compare-trigger" data-source="jpg">
+                            <i class="fa-solid fa-sliders" aria-hidden="true"></i>Bandingkan
+                        </button>
+                        <button type="button" class="btn-action js-lightbox-trigger" data-src="./sample_output_2.jpg" data-title="sample_output_2.jpg — Hasil 4x Scaleup (JPEG)" data-caption="6144 x 11008 px (67.63 MP / 11K) · 28.49 MB · JPEG sRGB + EXIF">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./sample_output_2.jpg" download="sample_output_2.jpg">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-card">
+                <div class="gallery-thumb" id="galleryThumbPng">
+                    <div class="gallery-placeholder" id="galleryPlaceholderPng">
+                        <i class="fa-solid fa-gem" aria-hidden="true"></i>
+                        <span>Hasil 4x PNG Lossless (80.51 MB)</span>
+                        <button type="button" class="btn-action btn-action-primary js-load-preview" data-key="png">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>Muat Pratinjau
+                        </button>
+                    </div>
+                    <img id="galleryImgPng" alt="Hasil 4x AI scale-up format PNG lossless (6144 x 11008 px)" style="display: none;">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">sample_output_1.png</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">6144x11008</span>
+                        <span class="spec-tag">67.63 MP</span>
+                        <span class="spec-tag">80.51 MB</span>
+                        <span class="spec-tag">PNG Lossless</span>
+                    </div>
+                    <p class="gallery-desc">Hasil upscale 4x resolusi 11K format PNG 8-bit RGBA tanpa kompresi lossy + metadata EXIF.</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-compare-trigger" data-source="png">
+                            <i class="fa-solid fa-sliders" aria-hidden="true"></i>Bandingkan
+                        </button>
+                        <button type="button" class="btn-action js-lightbox-trigger" data-src="./sample_output_1.png" data-title="sample_output_1.png — Hasil 4x Scaleup (PNG Lossless)" data-caption="6144 x 11008 px (67.63 MP / 11K) · 80.51 MB · PNG 8-bit RGBA + EXIF">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./sample_output_1.png" download="sample_output_1.png">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-card">
+                <div class="gallery-thumb is-contain">
+                    <img src="./main_ui_app.png" loading="lazy" alt="Tampilan beranda aplikasi Icl Image Scaleup">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">main_ui_app.png</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">720x1600</span>
+                        <span class="spec-tag">128.74 KB</span>
+                        <span class="spec-tag">PNG</span>
+                    </div>
+                    <p class="gallery-desc">Tangkapan layar beranda aplikasi <strong>Icl Image Scaleup</strong> (menu AI Image Scaleup, Background Remover, &amp; Pekerjaan Terakhir).</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-lightbox-trigger" data-src="./main_ui_app.png" data-title="main_ui_app.png — Beranda Aplikasi" data-caption="720 x 1600 px · 128.74 KB · PNG">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./main_ui_app.png" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Buka Asli
+                        </a>
+                        <a class="btn-action" href="./main_ui_app.png" download="main_ui_app.png">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-card">
+                <div class="gallery-thumb is-contain">
+                    <img src="./ui_preview_app.png" loading="lazy" alt="Tampilan pratinjau Before/After dan cetak ulang di aplikasi Icl Image Scaleup">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">ui_preview_app.png</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">720x1600</span>
+                        <span class="spec-tag">239.18 KB</span>
+                        <span class="spec-tag">PNG</span>
+                    </div>
+                    <p class="gallery-desc">Tangkapan layar pratinjau hasil 4x <strong>Ultra 4K</strong> di aplikasi beserta opsi cetak ulang (PNG Lossless, WEBP, JPEG 100%).</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-lightbox-trigger" data-src="./ui_preview_app.png" data-title="ui_preview_app.png — Pratinjau &amp; Cetak Ulang" data-caption="720 x 1600 px · 239.18 KB · PNG">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./ui_preview_app.png" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Buka Asli
+                        </a>
+                        <a class="btn-action" href="./ui_preview_app.png" download="ui_preview_app.png">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-card">
+                <div class="gallery-thumb is-contain">
+                    <img src="./verified_google_protect.png" loading="lazy" alt="Tangkapan layar verifikasi Google Play Protect — Aplikasi ini tampak aman">
+                </div>
+                <div class="gallery-body">
+                    <h3 class="gallery-title">verified_google_protect.png</h3>
+                    <div class="gallery-specs">
+                        <span class="spec-tag">720x860</span>
+                        <span class="spec-tag">72.75 KB</span>
+                        <span class="spec-tag">PNG</span>
+                    </div>
+                    <p class="gallery-desc">Bukti pemindaian keamanan <strong>Google Play Protect</strong>: <em>"Aplikasi ini tampak aman"</em> untuk Icl Image Scaleup.</p>
+                    <div class="gallery-actions">
+                        <button type="button" class="btn-action btn-action-primary js-lightbox-trigger" data-src="./verified_google_protect.png" data-title="verified_google_protect.png — Google Play Protect" data-caption="720 x 860 px · 72.75 KB · PNG">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>Perbesar
+                        </button>
+                        <a class="btn-action" href="./verified_google_protect.png" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Buka Asli
+                        </a>
+                        <a class="btn-action" href="./verified_google_protect.png" download="verified_google_protect.png">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
+    <div class="lightbox-dialog">
+        <div class="lightbox-header">
+            <h3 class="lightbox-title" id="lightboxTitle">Pratinjau Gambar</h3>
+            <button type="button" class="lightbox-close" id="lightboxCloseBtn" aria-label="Tutup pratinjau">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="lightbox-media">
+            <img id="lightboxImg" alt="">
+        </div>
+        <div class="lightbox-footer">
+            <span id="lightboxCaption"></span>
+            <a class="btn-action" id="lightboxDownloadLink" download>
+                <i class="fa-solid fa-download" aria-hidden="true"></i>Unduh Berkas Asli
+            </a>
+        </div>
+    </div>
 </div>
 
 <script>
 const PUBLIC_AUTH_DIGEST_HEX = "300238f27ba21a2ea68688abe99bcf780992af7bc8d59a82fbde4348e222c7a8";
-const OFFICIAL_RELEASE_SHA256 = "acf681535f51c88397b80c1884e8d89a6f8589b6c17a1cd8141da831d6c73e4d";
+const OFFICIAL_RELEASE_SHA256 = "94480bfa211304a7c95c3ea47824f207bc786c515c0d5e0aea050642b5929227";
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
 function hexToBytes(hex) {
@@ -348,6 +1133,454 @@ apkDropZone.addEventListener("drop", async (e) => {
         await verifyApkFile(file);
     }
 });
+
+const OUTPUT_SOURCES = {
+    jpg: {
+        src: "./sample_output_2.jpg",
+        badge: "4x JPEG · 6144x11008",
+        fileName: "sample_output_2.jpg",
+        meta: "6144 x 11008 px (67.63 MP / 11K) · 28.49 MB · JPEG sRGB + EXIF",
+        sizeLabel: "28.49 MB"
+    },
+    png: {
+        src: "./sample_output_1.png",
+        badge: "4x PNG · 6144x11008",
+        fileName: "sample_output_1.png",
+        meta: "6144 x 11008 px (67.63 MP / 11K) · 80.51 MB · PNG Lossless + EXIF",
+        sizeLabel: "80.51 MB"
+    }
+};
+
+const FOCUS_PRESETS = {
+    full: { fx: 0.5, fy: 0.5, minZoom: 1, exactZoom: 1 },
+    eye: { fx: 0.54, fy: 0.36, minZoom: 4 },
+    crest: { fx: 0.5, fy: 0.24, minZoom: 4 },
+    chest: { fx: 0.51, fy: 0.52, minZoom: 4 },
+    claws: { fx: 0.48, fy: 0.72, minZoom: 4 }
+};
+
+const viewerState = {
+    mode: "slider",
+    sourceKey: "jpg",
+    split: 50,
+    zoom: 1,
+    fx: 0.5,
+    fy: 0.5,
+    focusKey: "full",
+    loaded: { jpg: false, png: false },
+    loading: { jpg: false, png: false }
+};
+
+const compareSection = document.getElementById("compareSection");
+const compareViewport = document.getElementById("compareViewport");
+const splitRangeRow = document.getElementById("splitRangeRow");
+const splitRange = document.getElementById("splitRange");
+const splitValueLabel = document.getElementById("splitValueLabel");
+const splitHandle = document.getElementById("splitHandle");
+const sideBySideGrid = document.getElementById("sideBySideGrid");
+const sideBeforePane = document.getElementById("sideBeforePane");
+const sideAfterPane = document.getElementById("sideAfterPane");
+
+const beforeImg = document.getElementById("beforeImg");
+const afterImg = document.getElementById("afterImg");
+const sideBeforeImg = document.getElementById("sideBeforeImg");
+const sideAfterImg = document.getElementById("sideAfterImg");
+const afterBadge = document.getElementById("afterBadge");
+const sideAfterBadge = document.getElementById("sideAfterBadge");
+const metaOutputName = document.getElementById("metaOutputName");
+const metaOutputInfo = document.getElementById("metaOutputInfo");
+const loadStatusPill = document.getElementById("loadStatusPill");
+const sideLoadStatusPill = document.getElementById("sideLoadStatusPill");
+
+function clamp(val, min, max) {
+    return Math.min(max, Math.max(min, val));
+}
+
+function setStatusPill(pill, iconClass, text, stateClass) {
+    pill.className = "load-status-pill" + (stateClass ? " " + stateClass : "");
+    pill.textContent = "";
+    const icon = document.createElement("i");
+    icon.className = iconClass;
+    icon.setAttribute("aria-hidden", "true");
+    pill.appendChild(icon);
+    pill.appendChild(document.createTextNode(text));
+}
+
+function syncStatusPills(iconClass, text, stateClass) {
+    setStatusPill(loadStatusPill, iconClass, text, stateClass);
+    setStatusPill(sideLoadStatusPill, iconClass, text, stateClass);
+}
+
+function revealGalleryPreview(key) {
+    const src = OUTPUT_SOURCES[key].src;
+    const isJpg = (key === "jpg");
+    const placeholder = document.getElementById(isJpg ? "galleryPlaceholderJpg" : "galleryPlaceholderPng");
+    const img = document.getElementById(isJpg ? "galleryImgJpg" : "galleryImgPng");
+    if (!img) return;
+    if (img.getAttribute("src") !== src) {
+        img.src = src;
+    }
+    img.style.display = "block";
+    if (placeholder) {
+        placeholder.style.display = "none";
+    }
+}
+
+function renderSplit() {
+    const pct = clamp(viewerState.split, 0, 100);
+    viewerState.split = pct;
+    compareViewport.style.setProperty("--split", pct + "%");
+    splitRange.value = String(Math.round(pct));
+    splitValueLabel.textContent = Math.round(pct) + "%";
+}
+
+function renderZoomAndPan() {
+    const z = viewerState.zoom;
+    const halfSpan = 0.5 / z;
+    viewerState.fx = z <= 1 ? 0.5 : clamp(viewerState.fx, halfSpan, 1 - halfSpan);
+    viewerState.fy = z <= 1 ? 0.5 : clamp(viewerState.fy, halfSpan, 1 - halfSpan);
+
+    const tx = clamp(0.5 - z * viewerState.fx, 1 - z, 0);
+    const ty = clamp(0.5 - z * viewerState.fy, 1 - z, 0);
+    const transform = z <= 1
+        ? "translate(0%, 0%) scale(1)"
+        : "translate(" + (tx * 100).toFixed(4) + "%, " + (ty * 100).toFixed(4) + "%) scale(" + z + ")";
+
+    [beforeImg, afterImg, sideBeforeImg, sideAfterImg].forEach((img) => {
+        img.style.transform = transform;
+    });
+
+    const isZoomed = z > 1;
+    [compareViewport, sideBeforePane, sideAfterPane].forEach((pane) => {
+        pane.classList.toggle("is-zoomed", isZoomed);
+    });
+}
+
+function updateActiveChips() {
+    document.querySelectorAll("[data-mode]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.mode === viewerState.mode));
+    });
+    document.querySelectorAll("[data-source]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.source === viewerState.sourceKey));
+    });
+    document.querySelectorAll("[data-zoom]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(Number(btn.dataset.zoom) === viewerState.zoom));
+    });
+    document.querySelectorAll("[data-focus]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.focus === viewerState.focusKey));
+    });
+}
+
+function applyCompareMode(mode) {
+    viewerState.mode = mode;
+    const isSlider = (mode === "slider");
+    compareViewport.style.display = isSlider ? "block" : "none";
+    splitRangeRow.style.display = isSlider ? "flex" : "none";
+    sideBySideGrid.classList.toggle("is-active", !isSlider);
+    updateActiveChips();
+}
+
+function loadOutputSource(key) {
+    const info = OUTPUT_SOURCES[key];
+    if (!info) return;
+    viewerState.sourceKey = key;
+    afterBadge.textContent = info.badge;
+    sideAfterBadge.textContent = info.badge;
+    metaOutputName.textContent = info.fileName;
+    metaOutputInfo.textContent = info.meta;
+    updateActiveChips();
+
+    if (viewerState.loaded[key]) {
+        if (afterImg.getAttribute("src") !== info.src) afterImg.src = info.src;
+        if (sideAfterImg.getAttribute("src") !== info.src) sideAfterImg.src = info.src;
+        syncStatusPills("fa-solid fa-circle-check", "Siap dibandingkan (" + info.sizeLabel + ")", "is-ready");
+        return;
+    }
+
+    viewerState.loading[key] = true;
+    syncStatusPills("fa-solid fa-spinner fa-spin", "Memuat hasil 4x (" + info.sizeLabel + ")...", "");
+
+    afterImg.onload = () => {
+        viewerState.loading[key] = false;
+        viewerState.loaded[key] = true;
+        revealGalleryPreview(key);
+        if (viewerState.sourceKey === key) {
+            if (sideAfterImg.getAttribute("src") !== info.src) sideAfterImg.src = info.src;
+            syncStatusPills("fa-solid fa-circle-check", "Siap dibandingkan", "is-ready");
+        }
+    };
+
+    afterImg.onerror = () => {
+        viewerState.loading[key] = false;
+        if (viewerState.sourceKey === key) {
+            syncStatusPills("fa-solid fa-triangle-exclamation", "Gagal memuat gambar", "is-error");
+        }
+    };
+
+    afterImg.src = info.src;
+    sideAfterImg.src = info.src;
+    if (afterImg.complete && afterImg.naturalWidth > 0) {
+        afterImg.onload();
+    }
+}
+
+function ensureCompareLoaded() {
+    const key = viewerState.sourceKey;
+    if (!viewerState.loaded[key] && !viewerState.loading[key]) {
+        loadOutputSource(key);
+    }
+}
+
+function applyFocusPreset(presetKey) {
+    const preset = FOCUS_PRESETS[presetKey];
+    if (!preset) return;
+    viewerState.focusKey = presetKey;
+    viewerState.fx = preset.fx;
+    viewerState.fy = preset.fy;
+    if (preset.exactZoom) {
+        viewerState.zoom = preset.exactZoom;
+    } else if (viewerState.zoom < preset.minZoom) {
+        viewerState.zoom = preset.minZoom;
+    }
+    updateActiveChips();
+    renderZoomAndPan();
+    ensureCompareLoaded();
+}
+
+function updateSplitFromClientX(clientX) {
+    const rect = compareViewport.getBoundingClientRect();
+    if (!rect.width) return;
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    viewerState.split = pct;
+    renderSplit();
+}
+
+function bindPanHandler(paneEl, allowSplitAt1x) {
+    let dragging = false;
+    let mode = "pan";
+    let lastX = 0;
+    let lastY = 0;
+
+    paneEl.addEventListener("pointerdown", (e) => {
+        if (e.target.closest("#splitHandle")) return;
+        ensureCompareLoaded();
+        if (allowSplitAt1x && viewerState.zoom <= 1) {
+            mode = "split";
+            dragging = true;
+            paneEl.setPointerCapture(e.pointerId);
+            updateSplitFromClientX(e.clientX);
+            return;
+        }
+        if (viewerState.zoom > 1) {
+            mode = "pan";
+            dragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            paneEl.classList.add("is-panning");
+            paneEl.setPointerCapture(e.pointerId);
+        }
+    });
+
+    paneEl.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        if (mode === "split") {
+            updateSplitFromClientX(e.clientX);
+            return;
+        }
+        const rect = paneEl.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        viewerState.fx -= dx / (rect.width * viewerState.zoom);
+        viewerState.fy -= dy / (rect.height * viewerState.zoom);
+        viewerState.focusKey = "";
+        updateActiveChips();
+        renderZoomAndPan();
+    });
+
+    const endDrag = (e) => {
+        if (!dragging) return;
+        dragging = false;
+        paneEl.classList.remove("is-panning");
+        if (paneEl.hasPointerCapture(e.pointerId)) {
+            paneEl.releasePointerCapture(e.pointerId);
+        }
+    };
+
+    paneEl.addEventListener("pointerup", endDrag);
+    paneEl.addEventListener("pointercancel", endDrag);
+}
+
+let handleDragging = false;
+splitHandle.addEventListener("pointerdown", (e) => {
+    e.stopPropagation();
+    handleDragging = true;
+    splitHandle.setPointerCapture(e.pointerId);
+    ensureCompareLoaded();
+});
+splitHandle.addEventListener("pointermove", (e) => {
+    if (!handleDragging) return;
+    updateSplitFromClientX(e.clientX);
+});
+const endHandleDrag = (e) => {
+    if (!handleDragging) return;
+    handleDragging = false;
+    if (splitHandle.hasPointerCapture(e.pointerId)) {
+        splitHandle.releasePointerCapture(e.pointerId);
+    }
+};
+splitHandle.addEventListener("pointerup", endHandleDrag);
+splitHandle.addEventListener("pointercancel", endHandleDrag);
+
+splitHandle.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
+        const delta = e.key === "ArrowLeft" ? -5 : 5;
+        viewerState.split += delta;
+        renderSplit();
+    }
+});
+
+splitRange.addEventListener("input", (e) => {
+    ensureCompareLoaded();
+    viewerState.split = Number(e.target.value);
+    renderSplit();
+});
+
+bindPanHandler(compareViewport, true);
+bindPanHandler(sideBeforePane, false);
+bindPanHandler(sideAfterPane, false);
+
+document.querySelectorAll("[data-mode]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        applyCompareMode(btn.dataset.mode);
+        ensureCompareLoaded();
+    });
+});
+
+document.querySelectorAll("[data-source]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        loadOutputSource(btn.dataset.source);
+    });
+});
+
+document.querySelectorAll("[data-zoom]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        viewerState.zoom = Number(btn.dataset.zoom);
+        if (viewerState.zoom === 1) {
+            viewerState.focusKey = "full";
+            viewerState.fx = 0.5;
+            viewerState.fy = 0.5;
+        } else {
+            viewerState.focusKey = "";
+        }
+        updateActiveChips();
+        renderZoomAndPan();
+        ensureCompareLoaded();
+    });
+});
+
+document.querySelectorAll("[data-focus]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        applyFocusPreset(btn.dataset.focus);
+    });
+});
+
+document.querySelectorAll(".js-compare-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const srcKey = btn.dataset.source || "jpg";
+        loadOutputSource(srcKey);
+        compareSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});
+
+document.querySelectorAll(".js-load-preview").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const key = btn.dataset.key;
+        const info = OUTPUT_SOURCES[key];
+        if (!info) return;
+        const placeholder = btn.closest(".gallery-placeholder");
+        const img = document.getElementById(key === "jpg" ? "galleryImgJpg" : "galleryImgPng");
+        if (!img) return;
+        btn.disabled = true;
+        btn.textContent = "Memuat (" + info.sizeLabel + ")...";
+        img.onload = () => {
+            viewerState.loaded[key] = true;
+            img.style.display = "block";
+            if (placeholder) placeholder.style.display = "none";
+        };
+        img.onerror = () => {
+            btn.disabled = false;
+            btn.textContent = "Coba Lagi";
+        };
+        img.src = info.src;
+    });
+});
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxTitle = document.getElementById("lightboxTitle");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxDownloadLink = document.getElementById("lightboxDownloadLink");
+const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+let lastLightboxTrigger = null;
+
+function openLightbox(src, title, caption, triggerEl) {
+    lastLightboxTrigger = triggerEl || null;
+    lightboxTitle.textContent = title;
+    lightboxCaption.textContent = caption;
+    lightboxImg.alt = title;
+    lightboxImg.src = src;
+    lightboxDownloadLink.href = src;
+    lightboxDownloadLink.download = src.split("/").pop();
+    lightbox.hidden = false;
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    lightboxCloseBtn.focus();
+}
+
+function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute("src");
+    document.body.style.overflow = "";
+    if (lastLightboxTrigger && typeof lastLightboxTrigger.focus === "function") {
+        lastLightboxTrigger.focus();
+    }
+}
+
+document.querySelectorAll(".js-lightbox-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        openLightbox(btn.dataset.src, btn.dataset.title, btn.dataset.caption, btn);
+    });
+});
+
+lightboxCloseBtn.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("is-open")) {
+        closeLightbox();
+    }
+});
+
+if ("IntersectionObserver" in window) {
+    const compareObserver = new IntersectionObserver((entries, observer) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+            ensureCompareLoaded();
+            observer.disconnect();
+        }
+    }, { rootMargin: "250px 0px" });
+    compareObserver.observe(compareSection);
+} else {
+    ensureCompareLoaded();
+}
+
+renderSplit();
+renderZoomAndPan();
 </script>
 </body>
 </html>

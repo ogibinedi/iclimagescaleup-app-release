@@ -3,7 +3,7 @@
 Selamat datang di repositori distribusi resmi **ICL Image Scaleup Studio** oleh **Igoy Creative Lab**.  
 Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk`) beserta panduan verifikasi keaslian aplikasi.
 
-> **Unduh Aplikasi (v1.0.0, 58.92 MB):** [Download `app-release.apk`](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk)
+> **Unduh Aplikasi (v1.0.0, 58.93 MB):** [Download `app-release.apk`](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk)
 
 ---
 
@@ -32,11 +32,11 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
 | Parameter | Nilai Resmi |
 | :--- | :--- |
 | **Nama Berkas** | `app-release.apk` |
-| **Tautan Unduhan Resmi** | [Download `app-release.apk` (v1.0.0, 58.92 MB)](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk) |
+| **Tautan Unduhan Resmi** | [Download `app-release.apk` (v1.0.0, 58.93 MB)](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk) |
 | **Paket Aplikasi** | `com.igoycreativelab.imagescaleup` |
 | **Arsitektur Target** | `arm64-v8a` (Android 8.0 Oreo / API 26 ke atas) |
-| **Ukuran Berkas Persis** | `61,778,438 bytes` (`58.92 MB`) |
-| **SHA-256 Checksum APK** | `acf681535f51c88397b80c1884e8d89a6f8589b6c17a1cd8141da831d6c73e4d` |
+| **Ukuran Berkas Persis** | `61,794,822 bytes` (`58.93 MB`) |
+| **SHA-256 Checksum APK** | `94480bfa211304a7c95c3ea47824f207bc786c515c0d5e0aea050642b5929227` |
 | **SHA-256 Sertifikat Pengembang** | `D8:EC:EE:19:71:33:19:BE:0E:3F:E2:42:BE:01:7A:77:12:B2:C2:B0:16:A1:9C:56:66:C2:CF:2A:8C:33:65:84` |
 
 ---
@@ -56,6 +56,29 @@ Anda dapat memastikan bahwa aplikasi yang terpasang di perangkat Anda adalah **1
 
 ### 2. Verifikasi Checksum SHA-256 Berkas APK
 Gunakan fitur **Cek Keaslian File APK** pada halaman **[Portal Verifikasi Resmi](https://iclimagescaleup-release.netlify.app/)** (atau jalankan perintah `sha256sum app-release.apk` di terminal) dan pastikan hasilnya cocok 100% dengan tabel di atas.
+
+---
+
+## 🖼️ Daftar Gambar di Root Repositori (Sampel Hasil & Verifikasi)
+
+Berikut adalah daftar berkas gambar yang tersedia di root direktori repositori ini beserta detail spesifikasi dan kegunaannya. Untuk membandingkan foto original dan hasil 4× AI scale-up secara interaktif (slider *Before/After* & zoom detail), Anda juga dapat mengunjungi **[Portal Verifikasi & Galeri Resmi](https://iclimagescaleup-release.netlify.app/)**.
+
+| Berkas Gambar | Kategori | Resolusi & Format | Ukuran Berkas | Keterangan |
+| :--- | :--- | :---: | :---: | :--- |
+| [`sample_input.jpg`](./sample_input.jpg) | Foto Original (Input) | `1536 × 2752 px` (`4.23 MP`, JPEG) | `575.07 KB` (`588,867 bytes`) | Foto sampel asli sebelum diproses dengan AI Super-Resolution. |
+| [`sample_output_1.png`](./sample_output_1.png) | Hasil 4× AI Scaleup (PNG) | `6144 × 11008 px` (`67.63 MP` / 11K, PNG 8-bit RGBA) | `80.51 MB` (`84,421,521 bytes`) | Hasil upscale **4×** (*Ultra 4K Foto & Objek Alami* — Master Lossless PNG) dengan metadata EXIF (`Model: Icl Image Scaleup`, `Artist`, `Copyright`). |
+| [`sample_output_2.jpg`](./sample_output_2.jpg) | Hasil 4× AI Scaleup (JPEG) | `6144 × 11008 px` (`67.63 MP` / 11K, JPEG sRGB) | `28.49 MB` (`29,876,378 bytes`) | Hasil upscale **4×** (cetak ulang JPEG Kualitas 100%) dengan profil warna `sRGB` & metadata EXIF (`Model: Icl Image Scaleup`, `Artist`, `Copyright`). |
+| [`main_ui_app.png`](./main_ui_app.png) | Tampilan Antarmuka | `720 × 1600 px` (PNG 8-bit RGBA) | `128.74 KB` (`131,833 bytes`) | Tangkapan layar beranda aplikasi **Icl Image Scaleup** (`PRO LICENSED`) — menampilkan AI Image Scaleup, AI Background Remover, dan riwayat pekerjaan. |
+| [`ui_preview_app.png`](./ui_preview_app.png) | Tampilan Antarmuka | `720 × 1600 px` (PNG 8-bit RGBA) | `239.18 KB` (`244,918 bytes`) | Tangkapan layar pratinjau perbandingan *Before/After* di aplikasi beserta spesifikasi hasil (`1536 × 2752` → `6144 × 11008`, `80.5 MB` Master Lossless) dan opsi cetak ulang. |
+| [`verified_google_protect.png`](./verified_google_protect.png) | Verifikasi Keamanan | `720 × 860 px` (PNG 8-bit RGBA) | `72.75 KB` (`74,494 bytes`) | Tangkapan layar **Google Play Protect** untuk **Icl Image Scaleup** (*"Aplikasi ini tampak aman — Anda dapat melanjutkan menginstalnya"*). |
+
+> 💡 **Catatan Pratinjau:** Berkas hasil upscale beresolusi 11K (`6144 × 11008 px`) berukuran besar (`28.49 MB` dan `80.51 MB`), sehingga ditautkan langsung pada tabel di atas agar halaman README tetap ringan saat dibuka.
+
+### 👀 Pratinjau Ringkas (`sample_input.jpg`, Tampilan UI & Verifikasi)
+
+| Foto Original (`sample_input.jpg`) | Beranda Aplikasi (`main_ui_app.png`) | Pratinjau & Ekspor (`ui_preview_app.png`) | Google Play Protect (`verified_google_protect.png`) |
+| :---: | :---: | :---: | :---: |
+| <img src="./sample_input.jpg" alt="Sampel Input Original (1536 x 2752 px)" width="200"> | <img src="./main_ui_app.png" alt="Tampilan Beranda Icl Image Scaleup" width="200"> | <img src="./ui_preview_app.png" alt="Tampilan Pratinjau Before/After dan Cetak Ulang" width="200"> | <img src="./verified_google_protect.png" alt="Verifikasi Google Play Protect — Icl Image Scaleup" width="200"> |
 
 ---
 
