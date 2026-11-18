@@ -3,7 +3,7 @@
 Selamat datang di repositori distribusi resmi **ICL Image Scaleup Studio** oleh **Igoy Creative Lab**.  
 Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk`) beserta panduan verifikasi keaslian aplikasi.
 
-> **Unduh Aplikasi (v1.0.0, 58.93 MB):** [Download `app-release.apk`](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk)
+> **Unduh Aplikasi (v1.0.0, 58.95 MB):** [Download `app-release.apk`](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk)
 
 ---
 
@@ -34,11 +34,11 @@ Repositori ini khusus disediakan untuk pengunduhan berkas instalasi resmi (`.apk
 | Parameter | Nilai Resmi |
 | :--- | :--- |
 | **Nama Berkas** | `app-release.apk` |
-| **Tautan Unduhan Resmi** | [Download `app-release.apk` (v1.0.0, 58.93 MB)](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk) |
+| **Tautan Unduhan Resmi** | [Download `app-release.apk` (v1.0.0, 58.95 MB)](https://github.com/ogibinedi/iclimagescaleup-app-release/raw/main/app-release.apk) |
 | **Paket Aplikasi** | `com.igoycreativelab.imagescaleup` |
 | **Arsitektur Target** | `arm64-v8a` (Android 8.0 Oreo / API 26 ke atas) |
-| **Ukuran Berkas Persis** | `61,796,062 bytes` (`58.93 MB`) |
-| **SHA-256 Checksum APK** | `86901c3055ac8364e2b1904bcd161f300cc082b16ec9810f05c79cf168c84539` |
+| **Ukuran Berkas Persis** | `61,812,446 bytes` (`58.95 MB`) |
+| **SHA-256 Checksum APK** | `734d083b49af749c7408596fa63b40596042138717e4f429b774d142fa564f1c` |
 | **SHA-256 Sertifikat Pengembang** | `D8:EC:EE:19:71:33:19:BE:0E:3F:E2:42:BE:01:7A:77:12:B2:C2:B0:16:A1:9C:56:66:C2:CF:2A:8C:33:65:84` |
 
 ---
